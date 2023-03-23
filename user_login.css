@@ -10,8 +10,7 @@ body{
 
 .form-container{
     text-align: center;
-    font: bold 14px "Microsoft YaHei", sans-serif;
-    line-height: 2.5em;
+    line-height: 3em;
     position: absolute;
     top: 0;
     bottom: 0;
@@ -22,12 +21,15 @@ body{
     height: 50%;
 }
 
-.my-form.form-group{
-    padding-bottom: 10px;
+.title{
+    font: bold 30px "Microsoft YaHei", sans-serif;
 }
 
 .my-form label{
     display: block;
+    font: bold 20px "Microsoft YaHei", sans-serif;
+    margin: 0px;
+    padding: 0px;
 }
 
 .my-form input[type="text"], .my-form textarea{
@@ -38,7 +40,7 @@ body{
 .button{
     background-color: #333;
     color: #fff;
-    padding: 5px 15px;
+    padding: 5px 30px;
     font: bold 12px "Microsoft YaHei", sans-serif;
 }
 
