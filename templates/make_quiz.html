@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/css/make_quiz.css') }}">
+    <title>Quizzes</title>
+</head>
+
+<body>
+    <div class="container">
+        <h2 class="title">Quizzes</h2>
+
+        <form action="{{ url_for('make_quiz') }}" method="POST" class="form"></form>
+            <table class="table">
+                <tr>
+                    <td>Question 1: </td>
+                    <td><input type="text" name="question-1" class="question"></td>
+                </tr>
+                <tr>
+                    <td>Answer 1: </td>
+                    <td><input type="text" name="answer-1" class="answer"></td>
+                    <td><input type="text" name="answer-1" class="answer"></td>
+                    <td><input type="text" name="answer-1" class="answer"></td>
+                    <td><input type="text" name="answer-1" class="answer"></td>
+                </tr>
+                <tr>
+                    <td>Question 2: </td>
+                    <td><input type="text" name="question-2" class="question"></td>
+                </tr>
+                <tr>
+                    <td>Answer 2: </td>
+                    <td><input type="text" name="answer-2" class="answer"></td>
+                    <td><input type="text" name="answer-2" class="answer"></td>
+                    <td><input type="text" name="answer-2" class="answer"></td>
+                    <td><input type="text" name="answer-2" class="answer"></td>
+                </tr>
+                <tr>
+                    <td>Question 3: </td>
+                    <td><input type="text" name="question-3" class="question"></td>
+                </tr>
+                <tr>
+                    <td>Answer 3: </td>
+                    <td><input type="text" name="answer-3" class="answer"></td>
+                    <td><input type="text" name="answer-3" class="answer"></td>
+                    <td><input type="text" name="answer-3" class="answer"></td>
+                    <td><input type="text" name="answer-3" class="answer"></td>
+                </tr>
+                <tr>
+                    <td>Question 4: </td>
+                    <td><input type="text" name="question-4" class="question"></td>
+                </tr>
+                <tr>
+                    <td>Answer 4: </td>
+                    <td><input type="text" name="answer-4" class="answer"></td>
+                    <td><input type="text" name="answer-4" class="answer"></td>
+                    <td><input type="text" name="answer-4" class="answer"></td>
+                    <td><input type="text" name="answer-4" class="answer"></td>
+                </tr>
+                <tr>
+                    <td>Question 5: </td>
+                    <td><input type="text" name="question-5" class="question"></td>
+                </tr>
+                <tr>
+                    <td>Answer 5: </td>
+                    <td><input type="text" name="answer-5" class="answer"></td>
+                    <td><input type="text" name="answer-5" class="answer"></td>
+                    <td><input type="text" name="answer-5" class="answer"></td>
+                    <td><input type="text" name="answer-5" class="answer"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td><input type="submit" value="submit" class="button"></td>
+                    <td><input type="reset" value="reset" class="button"></td>
+                </tr>
+            </table>
+
+        </form>
+
+    </div>
+
+</body>
+
+</html>
