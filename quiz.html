@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Quiz App</title>
+  </head>
+
+  <body>
+
+    {% for quiz in quizzes %}
+      <div class="quiz">
+        <h3>{{ quiz.question }}</h3>
+        <form action="/check-answer" method="post">
+          {% for option in quiz.options %}
+            <input type="radio" name="answer" value="{{ option }}"> {{ option }}<br>
+          {% endfor %}
+          <input type="hidden" name="correct_answer" value="{{ quiz.answer }}">
+          <input type="submit" value="Submit">
+        </form>
+      </div>
+    {% endfor %}  
+  </body>
+
+</html>
