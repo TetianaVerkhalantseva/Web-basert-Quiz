@@ -10,9 +10,13 @@ def choose_user():
 def user_login():
     return render_template('user_login.html')
 
-@app.route('/success')
+@app.route('/success', methods=['POST'])
 def success():
-    return render_template('success.html')
+    if request.method == 'POST':
+        form = request.form
+        first_name = form.get('first_name')
+        last_name = form.get('last_name')
+    return render_template('success.html', fName=first_name, lName=last_name)
 
 @app.route('/make-quiz')
 def make_quiz():
