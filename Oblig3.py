@@ -1,6 +1,8 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, flash
+from validators import LoginForm
 
 app = Flask(__name__)
+app.config["SECRET_KEY"] = "123456"
 
 @app.route('/')
 def choose_user():
@@ -12,11 +14,17 @@ def user_login():
 
 @app.route('/success', methods=['POST'])
 def success():
-    if request.method == 'POST':
-        form = request.form
-        first_name = form.get('first_name')
-        last_name = form.get('last_name')
-    return render_template('success.html', fName=first_name, lName=last_name)
+    form = LoginForm(request.form)
+
+    if form.validate():
+        first_name = form.firstname.data
+        last_name = form.lastname.data
+        return render_template('success.html', fName=first_name, lName=last_name)
+    else:
+        for errors in form.errors.values():
+            for error in errors:
+                flash(error)
+        return redirect("/user-login")
 
 @app.route('/make-quiz')
 def make_quiz():
