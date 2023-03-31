@@ -8,15 +8,16 @@
   <body>
     <form class="my-form", action="{{ url_for('success') }}", method="post">
       <h3 class="title">Please enter your name</h2>
+
       <table class="table">
         <tr>
           <td>First name: </td>
-          <td><input type="text" name="first_name"></td>
+          <td><input type="text" name="firstname"></td>
         </tr>
 
         <tr>
           <td>Last name: </td>
-          <td><input type="text" name="last_name"></td>
+          <td><input type="text" name="lastname"></td>
         </tr>
 
         <tr>
@@ -24,6 +25,12 @@
           <td><input type="submit" value="Login" class="button"></td>
         </tr>
       </table>
+
+      <ul>
+        {% for message in get_flashed_messages() %}
+          <li>{{ message }}</li>
+        {% endfor %}
+      </ul>
     </form>
   </body>
 
