@@ -10,7 +10,8 @@
 </head>
     
 <body>
-    <p>Welcome {{ name }}!</p>
+    <p>Welcome {{ fName }} {{ lName }}!</p>
+    <a href="{{ url_for('make_quiz') }}" class="button">Make quiz</a>
 </body>
 
 </html>

@@ -1,16 +1,9 @@
-a{
-    text-decoration: none;
-    color: #000;
-}
-
 body{
-    background-color: #f4f4f4;
-    margin: 0;
-}
-
-.form-container{
+    background-color: #fff;
+    color: #000;
+    font: bold 16px "Consolas", "Microsoft YaHei", sans-serif;
+    line-height: 1.5em;
     text-align: center;
-    line-height: 3em;
     position: absolute;
     top: 0;
     bottom: 0;
@@ -21,27 +14,29 @@ body{
     height: 50%;
 }
 
+.table{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+  
+
+tr{
+    padding: 20px;
+}
+
+
 .title{
     font: bold 30px "Microsoft YaHei", sans-serif;
-}
-
-.my-form label{
-    display: block;
-    font: bold 20px "Microsoft YaHei", sans-serif;
-    margin: 0px;
-    padding: 0px;
-}
-
-.my-form input[type="text"], .my-form textarea{
-    padding: 5px;
-    width: 10%;
 }
 
 .button{
     background-color: #333;
     color: #fff;
-    padding: 5px 30px;
+    padding: 5px 20px;
     font: bold 12px "Microsoft YaHei", sans-serif;
+    margin: 20px;
 }
 
 .button:hover{
