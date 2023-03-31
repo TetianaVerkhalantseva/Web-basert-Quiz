@@ -21,3 +21,6 @@ pip list
 
 # Manuel pip install
 pip install flask flask-login flask-mail email-validator flask-wtf WTForms mysql-connector-python uuid Werkzeug sqlalchemy flask-bcrypt flask_bootstrap
+
+#launch app
+python3 __init__.py
