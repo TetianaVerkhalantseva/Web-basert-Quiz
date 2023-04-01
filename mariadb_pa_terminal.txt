@@ -10,6 +10,16 @@ mysql -h kark.uit.no -u stud_v23_tda072 -p
 # for å logge inn på databasen
 use stud_v23_tda072
 
+
+#passord for administratorer i app
+#admin1 Dafna
+passord: Qwerty1!
+passord_hash:'pbkdf2:sha256:260000$nrT5KAfL8aYlThOj$b435183950cf953d3ff0e7b45af0f75929b32ea31a0ee7f2c1150400213f0cd7'
+
+#admin2 Vesemo
+passord: Asdfgh3#
+passord_hash: 'pbkdf2:sha256:260000$ceyXsAadOPvWSmc7$4af1954e30236cf6815d2ccaa482685974c5e89b6f2b69466b2ac381a26106aa'
+
 #eksempler på vanlige spørringer
 
 show tables;
