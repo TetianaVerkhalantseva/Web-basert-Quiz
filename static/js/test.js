@@ -1,1 +1,1 @@
-alert("我是test.js中执行的");
+alert("This is a test file from JavaScript");
