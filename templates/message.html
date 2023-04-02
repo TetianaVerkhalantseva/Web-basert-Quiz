@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Quiz</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/css/message.css') }}">
+  </head>
+
+  <body>
+    <div class="container">
+      <h3 class="title">{{ message }}</h3>
+      <a href="{{ url_for('take_quiz') }}" class="button">Next question</a>
+    </div>
+  </body>
+
+</html>
