@@ -10,3 +10,4 @@ class LoginForm(Form):
                 message="Please enter the right lastname!")])
     
     #email = StringField(validators=[email(message="Please enter the right email!")])
+    #this is the test
