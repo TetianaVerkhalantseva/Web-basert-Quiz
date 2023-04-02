@@ -9,7 +9,7 @@ class LoginForm(Form):
     lastname = StringField(validators=[length(min=3, max=30,\
                 message="Please enter the right lastname!")])
     
-    #We can active email validator if needed!
+    #We can activate email validator if needed!
     #email = StringField(validators=[email(message="Please enter the right email!")])
 
     #We can validate if the email has been registered
