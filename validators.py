@@ -9,11 +9,11 @@ class LoginForm(Form):
     lastname = StringField(validators=[length(min=3, max=30,\
                 message="Please enter the right lastname!")])
     
-    #We can active email validator if needed!
+    #We can activate email validator if needed!
     #email = StringField(validators=[email(message="Please enter the right email!")])
 
     #We can validate if the email has been registered
-    #First we need to get all the informations about emails in the database
+    #First we need to get all the information about emails in the database
     #Eks: registered_email = ["aa@uit.no", "bb@uit.no"]
 
     #def validate_email(self, field):
