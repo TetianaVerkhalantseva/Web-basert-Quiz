@@ -1,6 +1,8 @@
 # Mac OS installering 
 # https://mariadb.com/resources/blog/installing-mariadb-10-1-16-on-mac-os-x-with-homebrew/?fbclid=IwAR3cVCNZqUx7irFI0OlrATffKFslqqM4YwMBEPbtdHvCNKjd0S9z0hnvMU8 
 
+# ekstra om git install !!!
+
 # for å logge inn på serveren
 mysql -h kark.uit.no -u stud_v23_tda072 -p 
 
