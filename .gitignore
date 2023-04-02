@@ -131,3 +131,10 @@ dmypy.json
 
 # Session data
 flask_session/
+
+# Personal data
+.idea/
+Blueprint/
+Flash_messages/
+Form_learning/
+migrations/
