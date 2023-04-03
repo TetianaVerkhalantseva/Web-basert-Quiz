@@ -1,7 +1,11 @@
 {% extends 'base.html' %}
-{% block body %}    
-<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/css/choose_user.css') }}">
+
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/css/choose_user.css') }}">
     <title>User choose</title>
+{% endblock %}
+
+{% block body %}   
 
     <div class="container">
         <h2 class="title">Welcome! Please choose a user</h2>
@@ -11,4 +15,3 @@
     </div>
     
 {% endblock %}
-    
