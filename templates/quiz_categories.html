@@ -2,8 +2,13 @@
 {% block body %}
 <title>Quizzes</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/css/quiz.css') }}">
+<div class="quiz">
+    <h1>Select a quiz!</h1>
+    <a href="{{ url_for('take_quiz') }}" class="button">Sport</a>
+    <a href="{{ url_for('take_quiz') }}" class="button">Geografi</a>
+    
 
-<p>Select a quiz:</p>
+</div>
 
 
 
