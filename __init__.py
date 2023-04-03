@@ -30,6 +30,10 @@ def success():
 def make_quiz():
     return render_template('make_quiz.html')
 
+@app.route('/category')
+def category():
+    return render_template("quiz_categories.html")
+
 @app.route('/take-quiz')
 def take_quiz():
     quizzes = [
