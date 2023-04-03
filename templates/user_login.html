@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html>
-  <head>
+{% extends 'base.html' %}
+{% block body %} 
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/css/user_login.css') }}">
     <title>Administrator login</title>
-  </head>
 
-  <body>
     <form class="my-form", action="{{ url_for('success') }}", method="post">
       <h3 class="title">Please enter your name</h2>
 
@@ -32,6 +29,5 @@
         {% endfor %}
       </ul>
     </form>
-  </body>
 
-</html>
+{% endblock %}
