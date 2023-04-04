@@ -1,17 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% block head %}
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/css/success.css') }}">
     <title>Success</title>
-</head>
+{% endblock %}
+
+{% block body %} 
     
-<body>
     <p>Welcome {{ fName }} {{ lName }}!</p>
     <a href="{{ url_for('make_quiz') }}" class="button">Make quiz</a>
-</body>
 
-</html>
+{% endblock %}

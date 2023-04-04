@@ -1,11 +1,12 @@
-<!DOCTYPE html>
-<html>
-  <head>
+{% extends 'base.html' %}
+
+{% block head %}
     <title>Quiz</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/css/quiz.css') }}">
-  </head>
+{% endblock %}
 
-  <body>
+{% block body %} 
+
     <div class="quiz">
       {% for quiz in quizzes %}
         <h3 class="title">{{ quiz.question }}</h3>
@@ -19,6 +20,4 @@
       {% endfor %}  
     </div>
 
-  </body>
-
-</html>
+{% endblock %}  
