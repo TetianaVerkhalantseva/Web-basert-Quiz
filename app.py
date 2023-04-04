@@ -1,8 +1,16 @@
+#To make sure this file is working properly, filename need to be "app.py"
+
 from flask import Flask, render_template, request, redirect, flash
 from validators import LoginForm
+import config
+from exts import db
+from models import UserModel
 
 app = Flask(__name__)
-app.config["SECRET_KEY"] = "123456"
+app.config.from_object(config.DevelopmentConfig)
+
+db.init_app(app)
+
 
 @app.route('/')
 def choose_user():
