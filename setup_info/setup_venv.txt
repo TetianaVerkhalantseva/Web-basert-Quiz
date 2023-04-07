@@ -16,11 +16,17 @@ python -m pip install --upgrade pip
 pip freeze > requirements.txt
 pip install -r requirements.txt
 
+#viser alle instalert moduler
 pip list
 
+#søk bestempt module ('sensitive' to uppercase and lowercase)
+pip list | grep Flask
 
 # Manuel pip install
 pip install flask flask-login flask-mail email-validator flask-wtf WTForms mysql-connector-python uuid Werkzeug sqlalchemy flask-bcrypt flask_bootstrap
 
 #launch app
 python3 __init__.py
+
+# flask run på terminal - kjør app på terminal
+flask run --debug 

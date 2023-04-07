@@ -3,13 +3,13 @@
 from flask import Flask, render_template, request, redirect, flash
 from validators import LoginForm
 import config
-from exts import db
-from models import UserModel
+# from exts import db
+from models import Admin
 
 app = Flask(__name__)
 app.config.from_object(config.DevelopmentConfig)
 
-db.init_app(app)
+# db.init_app(app)
 
 
 @app.route('/')
