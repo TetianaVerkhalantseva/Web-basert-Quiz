@@ -13,8 +13,8 @@ app.config.from_object(config.DevelopmentConfig)
 
 
 @app.route('/')
-def choose_user():
-    return render_template('choose_user.html')
+def home():
+    return render_template('index.html')
 
 @app.route('/user-login')
 def user_login():
@@ -59,9 +59,9 @@ def check_answer():
     user_answer = request.form['answer']
     correct_answer = request.form['correct_answer']
     if user_answer == correct_answer:
-        message = "Correct!"
+        message = "Korrekt!"
     else:
-        message = "Incorrect!"
+        message = "Stemmer ikke!"
     return render_template('message.html', message=message)
 
 
