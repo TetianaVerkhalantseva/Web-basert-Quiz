@@ -5,7 +5,6 @@ from sqlalchemy import Column, Integer, String, Text, DateTime, Boolean, Foreign
 from sqlalchemy.ext.declarative import declarative_base
 from flask_login import UserMixin
 from sqlalchemy.orm import relationship
-
 from config import DevelopmentConfig
 
 
