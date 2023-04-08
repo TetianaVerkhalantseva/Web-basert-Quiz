@@ -1,5 +1,8 @@
+import secrets
+
+
 class BaseConfig:
-    SECRET_KEY = "123456"
+    SECRET_KEY = secrets.token_urlsafe(32)
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 

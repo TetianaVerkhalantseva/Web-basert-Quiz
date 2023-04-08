@@ -2,15 +2,15 @@
 
 {% block head %}
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/css/choose_user.css') }}">
-    <title>User choose</title>
+    <title>Hjemmeside</title>
 {% endblock %}
 
 {% block body %}   
 
     <div class="container">
-        <h2 class="title">Welcome! Please choose a user</h2>
+        <h2 class="title">Velkommen! Velg bruker</h2>
 
-        <a href="{{ url_for('category') }}" class="button">User</a>
+        <a href="{{ url_for('category') }}" class="button">Bruker</a>
         <a href="{{ url_for('user_login') }}" class="button">Administrator</a>
     </div>
     
