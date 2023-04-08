@@ -1,5 +1,4 @@
 #We can create class and table objects into database here
-# from exts import db
 
 from sqlalchemy import Column, Integer, String, Text, DateTime, Boolean, ForeignKey, create_engine
 from sqlalchemy.ext.declarative import declarative_base

@@ -2,8 +2,7 @@
 
 from flask import Flask, render_template, request, redirect, flash
 from validators import LoginForm
-import config
-# from exts import db
+from config import DevelopmentConfig
 from models import Admin
 
 app = Flask(__name__)
