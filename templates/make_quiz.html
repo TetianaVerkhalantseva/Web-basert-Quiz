@@ -2,66 +2,66 @@
 
 {% block head %}
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/css/make_quiz.css') }}">
-    <title>Quizzes</title>
+    <title>Quizer</title>
 {% endblock %}
 
 {% block body %} 
 
     <div class="container">
-        <h2 class="title">Quizzes</h2>
+        <h2 class="title">Quizer</h2>
 
         <form action="{{ url_for('make_quiz') }}" method="POST" class="form"></form>
             <table class="table">
                 <tr>
-                    <td>Question 1: </td>
+                    <td>Spørsmål 1: </td>
                     <td><input type="text" name="question-1" class="question"></td>
                 </tr>
                 <tr>
-                    <td>Answer 1: </td>
+                    <td>Svar 1: </td>
                     <td><input type="text" name="answer-1" class="answer"></td>
                     <td><input type="text" name="answer-1" class="answer"></td>
                     <td><input type="text" name="answer-1" class="answer"></td>
                     <td><input type="text" name="answer-1" class="answer"></td>
                 </tr>
                 <tr>
-                    <td>Question 2: </td>
+                    <td>Spørsmål 2: </td>
                     <td><input type="text" name="question-2" class="question"></td>
                 </tr>
                 <tr>
-                    <td>Answer 2: </td>
+                    <td>Svar 2: </td>
                     <td><input type="text" name="answer-2" class="answer"></td>
                     <td><input type="text" name="answer-2" class="answer"></td>
                     <td><input type="text" name="answer-2" class="answer"></td>
                     <td><input type="text" name="answer-2" class="answer"></td>
                 </tr>
                 <tr>
-                    <td>Question 3: </td>
+                    <td>Spørsmål 3: </td>
                     <td><input type="text" name="question-3" class="question"></td>
                 </tr>
                 <tr>
-                    <td>Answer 3: </td>
+                    <td>Svar 3: </td>
                     <td><input type="text" name="answer-3" class="answer"></td>
                     <td><input type="text" name="answer-3" class="answer"></td>
                     <td><input type="text" name="answer-3" class="answer"></td>
                     <td><input type="text" name="answer-3" class="answer"></td>
                 </tr>
                 <tr>
-                    <td>Question 4: </td>
+                    <td>Spørsmål 4: </td>
                     <td><input type="text" name="question-4" class="question"></td>
                 </tr>
                 <tr>
-                    <td>Answer 4: </td>
+                    <td>Svar 4: </td>
                     <td><input type="text" name="answer-4" class="answer"></td>
                     <td><input type="text" name="answer-4" class="answer"></td>
                     <td><input type="text" name="answer-4" class="answer"></td>
                     <td><input type="text" name="answer-4" class="answer"></td>
                 </tr>
                 <tr>
-                    <td>Question 5: </td>
+                    <td>Spørsmål 5: </td>
                     <td><input type="text" name="question-5" class="question"></td>
                 </tr>
                 <tr>
-                    <td>Answer 5: </td>
+                    <td>Svar 5: </td>
                     <td><input type="text" name="answer-5" class="answer"></td>
                     <td><input type="text" name="answer-5" class="answer"></td>
                     <td><input type="text" name="answer-5" class="answer"></td>
@@ -70,8 +70,8 @@
                 <tr>
                     <td></td>
                     <td></td>
-                    <td><input type="submit" value="submit" class="button"></td>
-                    <td><input type="reset" value="reset" class="button"></td>
+                    <td><input type="submit" value="Sende inn" class="button"></td>
+                    <td><input type="reset" value="Nullstill" class="button"></td>
                 </tr>
             </table>
 
