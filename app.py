@@ -2,7 +2,7 @@
 
 from flask import Flask, render_template, request, redirect, flash
 from validators import LoginForm
-from config import DevelopmentConfig
+import config
 from models import Admin
 
 app = Flask(__name__)
