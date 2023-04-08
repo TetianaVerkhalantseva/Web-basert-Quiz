@@ -2,28 +2,28 @@
 
 {% block head %}
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/css/user_login.css') }}">
-    <title>Administrator login</title>
+    <title>Administrator logg inn</title>
 {% endblock %}
 
 {% block body %} 
 
     <form class="my-form", action="{{ url_for('success') }}", method="post">
-      <h3 class="title">Please enter your name</h2>
+      <h3 class="title">Skriv inn navnet ditt</h2>
 
       <table class="table">
         <tr>
-          <td>First name: </td>
+          <td>Fornavn: </td>
           <td><input type="text" name="firstname"></td>
         </tr>
 
         <tr>
-          <td>Last name: </td>
+          <td>Etternavn: </td>
           <td><input type="text" name="lastname"></td>
         </tr>
 
         <tr>
-          <td><a href="/" class="button">Back</a></td>
-          <td><input type="submit" value="Login" class="button"></td>
+          <td><a href="/" class="button">Tilbake</a></td>
+          <td><input type="submit" value="Logg inn" class="button"></td>
         </tr>
       </table>
 

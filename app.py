@@ -2,19 +2,18 @@
 
 from flask import Flask, render_template, request, redirect, flash
 from validators import LoginForm
-import config
-from exts import db
-from models import UserModel
+from config import DevelopmentConfig
+from models import Admin
 
 app = Flask(__name__)
 app.config.from_object(config.DevelopmentConfig)
 
-db.init_app(app)
+# db.init_app(app)
 
 
 @app.route('/')
-def choose_user():
-    return render_template('choose_user.html')
+def home():
+    return render_template('index.html')
 
 @app.route('/user-login')
 def user_login():
@@ -59,9 +58,9 @@ def check_answer():
     user_answer = request.form['answer']
     correct_answer = request.form['correct_answer']
     if user_answer == correct_answer:
-        message = "Correct!"
+        message = "Korrekt!"
     else:
-        message = "Incorrect!"
+        message = "Stemmer ikke!"
     return render_template('message.html', message=message)
 
 
