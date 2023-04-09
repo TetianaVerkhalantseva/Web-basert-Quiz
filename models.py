@@ -1,6 +1,6 @@
 #We can create class and table objects into database here
 
-from sqlalchemy import Column, Integer, String, Text, DateTime, Boolean, ForeignKey, create_engine
+from sqlalchemy import Column, Integer, String, Text, Boolean, ForeignKey, create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from flask_login import UserMixin
 from sqlalchemy.orm import relationship
@@ -26,13 +26,17 @@ class Quiz(base):
     navn = Column(String(50), nullable=False)
     beskrivelse = Column(Text(1000), nullable=True)
     admin_id = Column(Integer, ForeignKey('admin.id'), nullable=True)
-    admin = relationship('Admin')  
+
+    admin = relationship('Admin', backref="quizzes")
+    spørsmål = relationship('QuestionHasQuiz', back_populates="quiz") 
 
 
 class QuestionCategory(base):
     __tablename__ = 'spørsmålskategori'
     id = Column(Integer, primary_key=True, autoincrement=True)
     navn = Column(String(50), nullable=False)
+
+    spørsmål = relationship('Question', back_populates="kategori")
 
 
 class Question(base):
@@ -41,8 +45,11 @@ class Question(base):
     spørsmål = Column(Text(500), nullable=False)
     kategori_id = Column(Integer, ForeignKey('spørsmålskategori.id'), nullable=False)
     admin_id = Column(Integer, ForeignKey('admin.id'), nullable=False)
-    kategori = relationship('QuestionCategory')
-    admin = relationship('Admin')
+
+    kategori = relationship('QuestionCategory', back_populates="spørsmål")
+    admin = relationship('Admin', backref="spørsmålene")
+    svarmulighet = relationship('AnswerOption', back_populates="spørsmål")
+    quiz = relationship('QuestionHasQuiz', back_populates="spørsmål")
 
 
 class AnswerOption(base):
@@ -51,7 +58,9 @@ class AnswerOption(base):
     svar = Column(Text(500), nullable=False)
     korrekt = Column(Boolean, nullable=False)
     spørsmål_id = Column(Integer, ForeignKey('spørsmål.id'), nullable=False)
-    spørsmål = relationship('Question')
+
+    spørsmål = relationship('Question', back_populates="svarmulighet")
+    quiz_sesjon = relationship('QuizSession', back_populates="svar")
 
 
 class QuestionHasQuiz(base):
@@ -59,8 +68,10 @@ class QuestionHasQuiz(base):
     id = Column(Integer, primary_key=True, autoincrement=True)
     spørsmål_id = Column(Integer, ForeignKey('spørsmål.id'), nullable=False)
     quiz_id = Column(Integer, ForeignKey('quiz.id'), nullable=False)
-    spørsmål = relationship('Question')
-    quiz = relationship('Quiz')
+
+    spørsmål = relationship('Question', back_populates="quiz")
+    quiz = relationship('Quiz', back_populates="spørsmål")
+    quiz_sesjon_id = relationship("QuizSession", back_populates="spørsmål_har_quiz_id")
     
 
 class QuizSession(base):
@@ -68,5 +79,6 @@ class QuizSession(base):
     id = Column(Integer, primary_key=True, autoincrement=True)
     spørsmål_har_quiz_id = Column(Integer, ForeignKey('spørsmål_har_quiz.id'), nullable=False)
     svar_id = Column(Integer, ForeignKey('svarmulighet.id'), nullable=False)
-    spørsmål_har_quiz_id = relationship('QuestionHasQuiz')
-    svar = relationship('AnswerOption')
+
+    spørsmål_har_quiz_id = relationship('QuestionHasQuiz', back_populates="quiz_sesjon_id")
+    svar = relationship('AnswerOption', back_populates="quiz_sesjon")
