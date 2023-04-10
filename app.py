@@ -51,15 +51,14 @@ def review_quiz():
     if request.method == 'GET':
         return render_template("review_quiz.html")
     else:
-        form = request.form
-        question1 = form.question1.data
-        answer1_1 = form.answer1_1.data
-        answer1_2 = form.answer1_2.data
-        answer1_3 = form.answer1_3.data
-        answer1_4 = form.answer1_4.data
+        question1 = request.form.get('question1')
+        answer1_1 = request.form.get('answer1_1')
+        answer1_2 = request.form.get('answer1_2')
+        answer1_3 = request.form.get('answer1_3')
+        answer1_4 = request.form.get('answer1_4')
 
         quiz = Quiz(question1, answer1_1, answer1_2, answer1_3, answer1_4)
-        return render_template("review_quiz.html", quizzes=quiz)
+        return render_template("review_quiz.html", quiz=quiz)
 
 
 @app.route('/category')
