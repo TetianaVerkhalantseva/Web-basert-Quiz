@@ -52,21 +52,23 @@ def review_quiz():
         return render_template("review_quiz.html")
 
     elif request.method == 'POST':
-        index = 1
-        questions = []
-        
-        for i in range(1, 6):
-                question = request.form.get('question' + i)
-                answer1 = request.form.get('answer')
-                answer2 = request.form.get('answer')
-                answer3 = request.form.get('answer')
-                answer4 = request.form.get('answer')
+        quizzes = []
 
-            questions.append({
+        for i in range(1, 6):
+            questions = []
+            question = request.form[f'question{i}']
+            questions.append(question)
+
+            answers = []
+            for j in range(1, 5):
+                answer = request.form[f'answer{i}_{j}']
+                answers.append(answer)
+
+            quizzes.append({
                 'question': question,
-                'answers': [answer1, answer2, answer3, answer4]
+                'answers': [answers[0], answers[1], answers[2], answers[3]]
             })
-        return render_template('review_quiz.html', quiz_data=questions)
+        return render_template('review_quiz.html', quizzes=quizzes)
 
 @app.route('/category')
 def category():

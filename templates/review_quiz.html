@@ -5,19 +5,19 @@
 {% endblock %}
 
 {% block body %}
-    <table>
+    <table border=1 class="table">
         <thead>
             <tr>
-                <th>Question</th>
-                <th>Answer 1</th>
-                <th>Answer 2</th>
-                <th>Answer 3</th>
-                <th>Answer 4</th>
+                <th>Quiz</th>
+                <th>Svar 1</th>
+                <th>Svar 2</th>
+                <th>Svar 3</th>
+                <th>Svar 4</th>
             </tr>
         </thead>
 
         <tbody>
-            {% for quiz in quiz_data %}
+            {% for quiz in quizzes %}
             <tr>
                 <td>{{ quiz['question'] }}</td>
                 {% for answer in quiz['answers'] %}
