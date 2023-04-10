@@ -35,6 +35,8 @@ def success():
 
 @app.route('/make-quiz')
 def make_quiz():
+    #Here we need to fetch all the data and send it to database
+
     return render_template('make_quiz.html')
 
 @app.route('/category')
@@ -43,6 +45,9 @@ def category():
 
 @app.route('/take-quiz')
 def take_quiz():
+    #Here we need to get all the questions from database
+    #And send them to html file
+
     quizzes = [
         {
             "question": "What is the capital of France?",
@@ -55,6 +60,8 @@ def take_quiz():
 
 @app.route('/check-answer', methods=['POST'])
 def check_answer():
+    #Here we need to check if the answer is correct one question at a time/one by one 
+
     user_answer = request.form['answer']
     correct_answer = request.form['correct_answer']
     if user_answer == correct_answer:
