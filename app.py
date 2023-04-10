@@ -8,8 +8,6 @@ from models import Admin
 app = Flask(__name__)
 app.config.from_object(config.DevelopmentConfig)
 
-# db.init_app(app)
-
 
 @app.route('/')
 def home():
@@ -61,6 +59,9 @@ def review_quiz():
                 'answers': [answers[0], answers[1], answers[2], answers[3]]
             })
         return render_template('review_quiz.html', quizzes=quizzes)
+        #Now we can fetch all the data from "quizzes" 
+        #But we need to add them to database
+        #How can we do it?
 
 @app.route('/category')
 def category():
@@ -69,7 +70,7 @@ def category():
 @app.route('/take-quiz')
 def take_quiz():
     #Here we need to get all the questions from database
-    #And send them to html file
+    #And send them to html template
 
     quizzes = [
         {
