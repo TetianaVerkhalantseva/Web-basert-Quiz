@@ -8,8 +8,6 @@ from models import Admin
 app = Flask(__name__)
 app.config.from_object(config.DevelopmentConfig)
 
-# db.init_app(app)
-
 
 @app.route('/')
 def home():
