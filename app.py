@@ -35,9 +35,32 @@ def success():
 
 @app.route('/make-quiz')
 def make_quiz():
-    #Here we need to fetch all the data and send it to database
+    return render_template("make_quiz.html")
 
-    return render_template('make_quiz.html')
+
+class Quiz:
+    def __init__(self, question, answer1, answer2, answer3, answer4):
+        self.question = question
+        self.answer1 = answer1
+        self.answer2 = answer2
+        self.answer3 = answer3
+        self.answer4 = answer4
+
+@app.route('/review-quiz', methods=['GET', 'POST'])
+def review_quiz():
+    if request.method == 'GET':
+        return render_template("review_quiz.html")
+    else:
+        form = request.form
+        question1 = form.question1.data
+        answer1_1 = form.answer1_1.data
+        answer1_2 = form.answer1_2.data
+        answer1_3 = form.answer1_3.data
+        answer1_4 = form.answer1_4.data
+
+        quiz = Quiz(question1, answer1_1, answer1_2, answer1_3, answer1_4)
+        return render_template("review_quiz.html", quizzes=quiz)
+
 
 @app.route('/category')
 def category():
