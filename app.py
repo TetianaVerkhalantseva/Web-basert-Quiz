@@ -50,16 +50,24 @@ class Quiz:
 def review_quiz():
     if request.method == 'GET':
         return render_template("review_quiz.html")
-    else:
-        question1 = request.form.get('question1')
-        answer1_1 = request.form.get('answer1_1')
-        answer1_2 = request.form.get('answer1_2')
-        answer1_3 = request.form.get('answer1_3')
-        answer1_4 = request.form.get('answer1_4')
 
-        quiz = Quiz(question1, answer1_1, answer1_2, answer1_3, answer1_4)
-        return render_template("review_quiz.html", quiz=quiz)
+    elif request.method == 'POST':
+        index = 1
+        questions = []
+        
+        for i in range(1, 6):
+                question = request.form.get('question' + i)
 
+                answer1 = request.form.get('answer')
+                answer2 = request.form.get('answer')
+                answer3 = request.form.get('answer')
+                answer4 = request.form.get('answer')
+
+            questions.append({
+                'question': question,
+                'answers': [answer1, answer2, answer3, answer4]
+            })
+        return render_template('review_quiz.html', quiz_data=questions)
 
 @app.route('/category')
 def category():

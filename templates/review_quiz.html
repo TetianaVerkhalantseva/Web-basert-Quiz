@@ -17,15 +17,14 @@
         </thead>
 
         <tbody>
-
+            {% for quiz in quiz_data %}
             <tr>
-                <td>{{ quiz.question }}</td>
-                <td>{{ quiz.answer1 }}</td>
-                <td>{{ quiz.answer2 }}</td>
-                <td>{{ quiz.answer3 }}</td>
-                <td>{{ quiz.answer4 }}</td>
+                <td>{{ quiz['question'] }}</td>
+                {% for answer in quiz['answers'] %}
+                    <td>{{ answer }}</td>
+                {% endfor %}
             </tr>
-
+            {% endfor %}
         </tbody>
     </table>
 {% endblock %}
