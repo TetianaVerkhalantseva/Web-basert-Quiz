@@ -57,7 +57,6 @@ def review_quiz():
         
         for i in range(1, 6):
                 question = request.form.get('question' + i)
-
                 answer1 = request.form.get('answer')
                 answer2 = request.form.get('answer')
                 answer3 = request.form.get('answer')
