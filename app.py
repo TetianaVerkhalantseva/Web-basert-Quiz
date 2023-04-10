@@ -38,14 +38,6 @@ def make_quiz():
     return render_template("make_quiz.html")
 
 
-class Quiz:
-    def __init__(self, question, answer1, answer2, answer3, answer4):
-        self.question = question
-        self.answer1 = answer1
-        self.answer2 = answer2
-        self.answer3 = answer3
-        self.answer4 = answer4
-
 @app.route('/review-quiz', methods=['GET', 'POST'])
 def review_quiz():
     if request.method == 'GET':
