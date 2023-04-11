@@ -1,0 +1,74 @@
+.admin-full-name {
+
+    width: 20%;
+    margin: 40px auto;
+    color: #333;
+    text-align: center;
+    font-size: 2.8em;
+    font-weight: bold;
+
+}
+
+section {
+
+    width: 80%;
+    margin: 40px auto;
+    padding: 10px;
+    text-align: center;
+
+}
+
+section .section-title {
+
+    width: 20%;
+    margin: 20px auto;
+    padding: 10px;
+    text-align: center;
+    color: #555;
+    font-size: 1.8em;
+    font-weight: bold;
+
+}
+
+section .no-items-message {
+
+    width: 20%;
+    margin: 20px auto;
+    padding: 10px;
+    text-align: center;
+    color: #777;
+    font-size: 1.2em;
+    font-weight: bold;
+
+}
+
+section .button-add-container {
+    margin: 35px auto;
+}
+
+section .button-add-container .button-add {
+    text-decoration: none;
+}
+
+section .quiz-container,
+section .question-container {
+    width: 80%;
+    margin: 10px auto;
+    padding: 10px;
+    text-align: center;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+}
+
+.quiz-link,
+.question-link {
+    display: block;
+    text-decoration: none;
+    color: #333;
+}
+
+.quiz-link:hover .quiz-container,
+.question-link:hover .question-container {
+    background-color: #e6e6e6;
+    cursor: pointer;
+}
