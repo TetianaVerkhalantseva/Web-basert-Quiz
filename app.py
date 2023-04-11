@@ -25,6 +25,8 @@ def success():
         first_name = form.firstname.data
         last_name = form.lastname.data
         return render_template('success.html', fName=first_name, lName=last_name)
+        #Here we need to save the user information to basebase
+
     else:
         for errors in form.errors.values():
             for error in errors:
