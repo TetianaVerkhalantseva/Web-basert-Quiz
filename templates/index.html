@@ -1,8 +1,11 @@
 {% extends 'base.html' %}
 
-{% block head %}
+{% block title %} Hjemmeside {% endblock %}
+
+{% block stylesheets %}
+
+    {{ super() }}
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/css/choose_user.css') }}">
-    <title>Hjemmeside</title>
 {% endblock %}
 
 {% block body %}   
