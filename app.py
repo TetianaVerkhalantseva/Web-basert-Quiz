@@ -8,8 +8,6 @@ from models import Admin
 app = Flask(__name__)
 app.config.from_object(config.DevelopmentConfig)
 
-# db.init_app(app)
-
 
 @app.route('/')
 def home():
@@ -27,6 +25,8 @@ def success():
         first_name = form.firstname.data
         last_name = form.lastname.data
         return render_template('success.html', fName=first_name, lName=last_name)
+        #Here we need to save the user information to basebase
+
     else:
         for errors in form.errors.values():
             for error in errors:
@@ -35,7 +35,35 @@ def success():
 
 @app.route('/make-quiz')
 def make_quiz():
-    return render_template('make_quiz.html')
+    return render_template("make_quiz.html")
+
+
+@app.route('/review-quiz', methods=['GET', 'POST'])
+def review_quiz():
+    if request.method == 'GET':
+        return render_template("review_quiz.html")
+
+    elif request.method == 'POST':
+        quizzes = []
+
+        for i in range(1, 6):
+            questions = []
+            question = request.form[f'question{i}']
+            questions.append(question)
+
+            answers = []
+            for j in range(1, 5):
+                answer = request.form[f'answer{i}_{j}']
+                answers.append(answer)
+
+            quizzes.append({
+                'question': question,
+                'answers': [answers[0], answers[1], answers[2], answers[3]]
+            })
+        return render_template('review_quiz.html', quizzes=quizzes)
+        #Now we can fetch all the data from "quizzes" 
+        #But we need to add them to database
+        #How can we do it?
 
 @app.route('/category')
 def category():
@@ -43,6 +71,9 @@ def category():
 
 @app.route('/take-quiz')
 def take_quiz():
+    #Here we need to get all the questions from database
+    #And send them to html template
+
     quizzes = [
         {
             "question": "What is the capital of France?",
@@ -55,6 +86,8 @@ def take_quiz():
 
 @app.route('/check-answer', methods=['POST'])
 def check_answer():
+    #Here we need to check if the answer is correct one question at a time/one by one 
+
     user_answer = request.form['answer']
     correct_answer = request.form['correct_answer']
     if user_answer == correct_answer:
