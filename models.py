@@ -1,9 +1,8 @@
-#We can create class and table objects into database here
-
-from sqlalchemy import Column, Integer, String, Text, DateTime, Boolean, ForeignKey, create_engine
+from sqlalchemy import Column, Integer, String, Text, Boolean, ForeignKey, create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from flask_login import UserMixin
-from sqlalchemy.orm import relationship
+from sqlalchemy.orm import relationship, sessionmaker
+
 from config import DevelopmentConfig
 
 
@@ -12,6 +11,13 @@ base = declarative_base()
 
 
 class Admin(base, UserMixin):
+
+    def set_info(self, **kwargs):
+        self.admin_info = kwargs
+
+    def __getitem__(self, item):
+        return None if not hasattr(self, 'admin_info') or item not in self.admin_info else self.admin_info[item]
+
     __tablename__ = 'admin'
     id = Column(Integer, primary_key=True, autoincrement=True)
     login = Column(String(50), nullable=False, unique=True)
@@ -43,6 +49,7 @@ class Question(base):
     admin_id = Column(Integer, ForeignKey('admin.id'), nullable=False)
     kategori = relationship('QuestionCategory')
     admin = relationship('Admin')
+    answer_options = relationship('AnswerOption', back_populates='spørsmål')
 
 
 class AnswerOption(base):
@@ -70,3 +77,7 @@ class QuizSession(base):
     svar_id = Column(Integer, ForeignKey('svarmulighet.id'), nullable=False)
     spørsmål_har_quiz_id = relationship('QuestionHasQuiz')
     svar = relationship('AnswerOption')
+
+base.metadata.create_all(engine)
+
+db_session = sessionmaker()(bind=engine)
