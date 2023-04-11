@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+
+{% block title %} Quiz {% endblock %}
+
+{% block stylesheets %}
+
+    {{ super() }}
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('.static', filename='/css/choose_quiz.css') }}">
+
+{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+
+        <h2 class="title">Velg quiz</h2>
+
+        <div class="quiz-list">
+
+            {% for quiz in quizzes %}
+
+                {% if quiz.number_of_questions != 0 %}
+
+                    <a href="{{ url_for('quizsession.quiz_greeting', quiz_id=quiz.id) }}" class="quiz-item">
+
+                        <h3> {{ quiz.name }} </h3>
+                        <p> {{ quiz.description }} </p>
+
+                        <p class="quiz-extra-info quiz-extra-info-first"> Antall spørsmål: {{ quiz.number_of_questions }} </p>
+                        <p class="quiz-extra-info"> Kategorier: 
+                        {% for category in quiz.categories %}
+                            <span> {{ category }} </span>
+                        {% endfor %}
+                        </p>
+
+                    </a>
+
+                {% endif %}
+
+            {% endfor %}
+
+        </div>
+        <a href="{{ url_for('index') }}" class="button">Tilbake</a>
+    </div>
+
+{% endblock %}
