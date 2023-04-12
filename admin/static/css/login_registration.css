@@ -1,4 +1,4 @@
-body{
+body {
     background-color: #fff;
     color: #000;
     font: bold 16px "Consolas", "Microsoft YaHei", sans-serif;
@@ -6,24 +6,24 @@ body{
     text-align: center;
 }
 
-.table{
+.table {
     position: absolute;
-    top: 50%;
+    top: 35%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
   
 
-tr{
+tr {
     padding: 20px;
 }
 
 
-.title{
+.title {
     font: bold 30px "Microsoft YaHei", sans-serif;
 }
 
-.button{
+.login-form input[type="submit"], .registration-form input[type="submit"] {
     background-color: #333;
     color: #fff;
     padding: 5px 20px;
@@ -31,7 +31,8 @@ tr{
     margin: 20px;
 }
 
-.button:hover{
+.login-form input[type="submit"]:hover, .registration-form input[type="submit"]:hover {
+    cursor: pointer;
     background-color: red;
     color: #fff;
 }

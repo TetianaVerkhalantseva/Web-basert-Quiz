@@ -1,9 +1,8 @@
-#We can create class and table objects into database here
-
 from sqlalchemy import Column, Integer, String, Text, Boolean, ForeignKey, create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from flask_login import UserMixin
-from sqlalchemy.orm import relationship
+from sqlalchemy.orm import relationship, sessionmaker
+
 from config import DevelopmentConfig
 
 
@@ -12,6 +11,13 @@ base = declarative_base()
 
 
 class Admin(base, UserMixin):
+
+    def set_info(self, **kwargs):
+        self.admin_info = kwargs
+
+    def __getitem__(self, item):
+        return None if not hasattr(self, 'admin_info') or item not in self.admin_info else self.admin_info[item]
+
     __tablename__ = 'admin'
     id = Column(Integer, primary_key=True, autoincrement=True)
     login = Column(String(50), nullable=False, unique=True)
@@ -26,17 +32,13 @@ class Quiz(base):
     navn = Column(String(50), nullable=False)
     beskrivelse = Column(Text(1000), nullable=True)
     admin_id = Column(Integer, ForeignKey('admin.id'), nullable=True)
-
-    admin = relationship('Admin', backref="quizzes")
-    spørsmål = relationship('QuestionHasQuiz', back_populates="quiz") 
+    admin = relationship('Admin')
 
 
 class QuestionCategory(base):
     __tablename__ = 'spørsmålskategori'
     id = Column(Integer, primary_key=True, autoincrement=True)
     navn = Column(String(50), nullable=False)
-
-    spørsmål = relationship('Question', back_populates="kategori")
 
 
 class Question(base):
@@ -45,11 +47,9 @@ class Question(base):
     spørsmål = Column(Text(500), nullable=False)
     kategori_id = Column(Integer, ForeignKey('spørsmålskategori.id'), nullable=False)
     admin_id = Column(Integer, ForeignKey('admin.id'), nullable=False)
-
-    kategori = relationship('QuestionCategory', back_populates="spørsmål")
-    admin = relationship('Admin', backref="spørsmålene")
-    svarmulighet = relationship('AnswerOption', back_populates="spørsmål")
-    quiz = relationship('QuestionHasQuiz', back_populates="spørsmål")
+    kategori = relationship('QuestionCategory')
+    admin = relationship('Admin')
+    answer_options = relationship('AnswerOption', back_populates='spørsmål')
 
 
 class AnswerOption(base):
@@ -58,9 +58,7 @@ class AnswerOption(base):
     svar = Column(Text(500), nullable=False)
     korrekt = Column(Boolean, nullable=False)
     spørsmål_id = Column(Integer, ForeignKey('spørsmål.id'), nullable=False)
-
-    spørsmål = relationship('Question', back_populates="svarmulighet")
-    quiz_sesjon = relationship('QuizSession', back_populates="svar")
+    spørsmål = relationship('Question')
 
 
 class QuestionHasQuiz(base):
@@ -68,10 +66,8 @@ class QuestionHasQuiz(base):
     id = Column(Integer, primary_key=True, autoincrement=True)
     spørsmål_id = Column(Integer, ForeignKey('spørsmål.id'), nullable=False)
     quiz_id = Column(Integer, ForeignKey('quiz.id'), nullable=False)
-
-    spørsmål = relationship('Question', back_populates="quiz")
-    quiz = relationship('Quiz', back_populates="spørsmål")
-    quiz_sesjon_id = relationship("QuizSession", back_populates="spørsmål_har_quiz_id")
+    spørsmål = relationship('Question')
+    quiz = relationship('Quiz')
     
 
 class QuizSession(base):
@@ -79,6 +75,9 @@ class QuizSession(base):
     id = Column(Integer, primary_key=True, autoincrement=True)
     spørsmål_har_quiz_id = Column(Integer, ForeignKey('spørsmål_har_quiz.id'), nullable=False)
     svar_id = Column(Integer, ForeignKey('svarmulighet.id'), nullable=False)
+    spørsmål_har_quiz = relationship('QuestionHasQuiz')
+    svar = relationship('AnswerOption')
 
-    spørsmål_har_quiz_id = relationship('QuestionHasQuiz', back_populates="quiz_sesjon_id")
-    svar = relationship('AnswerOption', back_populates="quiz_sesjon")
+base.metadata.create_all(engine)
+
+db_session = sessionmaker()(bind=engine)

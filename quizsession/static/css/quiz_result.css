@@ -1,22 +1,37 @@
-a{
+a {
     text-decoration: none;
-    color: #333;
+    color: #000;
 }
 
-body{
-    background-color: #fff;
-    color: #000;
-    font: bold 16px "Consolas", "Microsoft YaHei", sans-serif;
-    line-height: 1.5em;
+body {
+    background-color: #f4f4f4;
+    margin: 0;
+}
+
+.container {
     text-align: center;
     position: absolute;
-    top: 0;
+    top: -300px;
     bottom: 0;
     left: 0;
     right: 0;
     margin: auto;
     width: 100%;
     height: 50%;
+}
+
+.quiz-description {
+    width: 30%;
+    margin: 50px auto;
+    font-size: 1.25rem;
+    margin-bottom: 3rem;
+    color: #6c757d;
+    text-align: center;
+    line-height: 1.5;
+}
+
+#piechart {
+    margin: 20px auto;
 }
 
 .button {
@@ -29,7 +44,9 @@ body{
     margin: 0px 0px;
     cursor: pointer;
     border-radius: 8px;
-    width: 8%;
+    width: 20%;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .button:hover {

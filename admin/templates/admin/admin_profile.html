@@ -1,0 +1,54 @@
+{% extends 'admin/admin_header.html' %}
+
+{% block title %} Administrator Profil {% endblock %}
+
+{% block stylesheets %}
+    {{ super() }}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('.static', filename='/css/admin_profile.css') }}">
+{% endblock %}
+
+{% block content %}
+    {% if current_user['fornavn'] is not none and current_user['etternavn'] is not none %}
+        <h2 class="admin-full-name"> {{ current_user['fornavn'] }} {{ current_user['etternavn'] }} </h2>
+    {% elif current_user['fornavn'] is not none %}
+        <h2 class="admin-full-name"> {{ current_user['fornavn'] }} </h2>
+    {% elif current_user['etternavn'] is not none %}
+        <h2 class="admin-full-name"> {{ current_user['etternavn'] }} </h2>
+    {% endif %}
+
+    <section>
+        <h3 class="section-title"> Mine Quizer </h3>
+        {% if quizzes %}
+            {% for quiz in quizzes %}
+                <a href="#" class="quiz-link">
+                    <div class="quiz-container">{{ quiz.navn }}</div>
+                </a>
+            {% endfor %}
+        {% else %}
+            <p class="no-items-message"> Ingen quizer </p>
+        {% endif %}
+
+        <div class="button-add-container">
+            <a href="#" class="button button-add"> Legg Til </a>
+        </div>
+
+    </section>
+
+    <section>
+        <h3 class="section-title"> Mine Spørsmål </h3>
+        {% if questions %}
+            {% for question in questions %}
+                <a href="#" class="question-link">
+                    <div class="question-container">{{ question.spørsmål }}</div>
+                </a>
+            {% endfor %}
+        {% else %}
+            <p class="no-items-message"> Ingen spørsmål </p>
+        {% endif %}
+
+        <div class="button-add-container">
+            <a href="#" class="button button-add"> Legg Til </a>
+        </div>
+
+    </section>
+{% endblock %}

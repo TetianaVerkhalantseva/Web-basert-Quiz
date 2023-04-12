@@ -1,8 +1,14 @@
 {% extends 'base.html' %}
 
-{% block head %}
+
+{% block title %} Hjemmeside {% endblock %}
+
+{% block stylesheets %}
+
+    {{ super() }}
+
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/css/choose_user.css') }}">
-    <title>Hjemmeside</title>
+
 {% endblock %}
 
 {% block body %}   
@@ -10,8 +16,8 @@
     <div class="container">
         <h2 class="title">Velkommen! Velg bruker</h2>
 
-        <a href="{{ url_for('category') }}" class="button">Bruker</a>
-        <a href="{{ url_for('user_login') }}" class="button">Administrator</a>
+        <a href="{{ url_for('quizsession.choose_quiz') }}" class="button"> Bruker </a>
+        <a href="{{ url_for('admin.user_login') }}" class="button"> Administrator </a>
     </div>
     
 {% endblock %}
