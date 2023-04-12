@@ -22,4 +22,3 @@ class RegistrationForm(FlaskForm):
     ])
 
     submit = SubmitField('Registrer')
-    
