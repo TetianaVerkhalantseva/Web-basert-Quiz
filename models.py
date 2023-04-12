@@ -32,7 +32,7 @@ class Quiz(base):
     navn = Column(String(50), nullable=False)
     beskrivelse = Column(Text(1000), nullable=True)
     admin_id = Column(Integer, ForeignKey('admin.id'), nullable=True)
-    admin = relationship('Admin')  
+    admin = relationship('Admin')
 
 
 class QuestionCategory(base):
@@ -75,7 +75,7 @@ class QuizSession(base):
     id = Column(Integer, primary_key=True, autoincrement=True)
     spørsmål_har_quiz_id = Column(Integer, ForeignKey('spørsmål_har_quiz.id'), nullable=False)
     svar_id = Column(Integer, ForeignKey('svarmulighet.id'), nullable=False)
-    spørsmål_har_quiz_id = relationship('QuestionHasQuiz')
+    spørsmål_har_quiz = relationship('QuestionHasQuiz')
     svar = relationship('AnswerOption')
 
 base.metadata.create_all(engine)
