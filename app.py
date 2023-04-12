@@ -33,9 +33,9 @@ def success():
                 flash(error)
         return redirect("/user-login")
 
-@app.route('/make-quiz')
+@app.route('/questions')
 def make_quiz():
-    return render_template("make_quiz.html")
+    return render_template("questions.html")
 
 
 @app.route('/review-quiz', methods=['GET', 'POST'])
