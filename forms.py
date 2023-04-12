@@ -16,9 +16,9 @@ class RegistrationForm(FlaskForm):
     login = StringField('Pålogging', validators=[DataRequired(message="Du må angi en pålogging."), Length(min=4, max=25, message="Pålogging må være mellom 4 og 25 tegn.")])
     first_name = StringField('Fornavn')
     last_name = StringField('Etternavn')
-    password = PasswordField('Passord', validators=[DataRequired(message="Du må angi et passord."), Length(min=8, max=25, message="Passord må være mellom 4 og 25 tegn.")])
+    password = PasswordField('Passord', validators=[DataRequired(message="Du må angi et passord."), Length(min=8, max=25, message="Passord må være mellom 8 og 25 tegn.")])
     password_confirm = PasswordField('Bekreft passord', validators=[
-        DataRequired(message="Du må bekrefte passordet."), Length(min=8, max=25, message="Passord må være mellom 4 og 25 tegn."), EqualTo('password', message="Passordene må være like.")
+        DataRequired(message="Du må bekrefte passordet."), Length(min=8, max=25, message="Passord må være mellom 8 og 25 tegn."), EqualTo('password', message="Passordene må være like.")
     ])
 
     submit = SubmitField('Registrer')
