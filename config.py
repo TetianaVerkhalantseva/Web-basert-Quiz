@@ -1,5 +1,13 @@
 import secrets
 
+# Database config
+HOST = "kark.uit.no"
+PORT = 3306
+USER = "stud_v23_tda072"
+PASSWORD = "2021T-Dakhno32"
+DATABASE = "stud_v23_tda072"
+CHARSET = "utf8"
+
 
 class BaseConfig:
     SECRET_KEY = secrets.token_urlsafe(32)
@@ -7,5 +15,4 @@ class BaseConfig:
 
 
 class DevelopmentConfig(BaseConfig):
-    SQLALCHEMY_DATABASE_URI = "mysql+pymysql://stud_v23_tda072:2021T-Dakhno32\
-    @kark.uit.no:3306/stud_v23_tda072?charset=utf8"
+    SQLALCHEMY_DATABASE_URI = f"mysql+pymysql://{USER}:{PASSWORD}@{HOST}:{PORT}/{DATABASE}?charset={CHARSET}"

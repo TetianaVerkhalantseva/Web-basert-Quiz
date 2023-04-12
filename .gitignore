@@ -138,3 +138,11 @@ Blueprint/
 Flash_messages/
 Form_learning/
 migrations/
+Validators/
+
+# Mac OS
+.DS_Store/
+.DS_Store
+
+
+.vscode/
