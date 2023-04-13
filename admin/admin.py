@@ -58,9 +58,9 @@ def user_registration():
     if current_user.is_authenticated:
         return redirect(url_for("admin.admin_profile"))
 
-    registration_form = RegistrationForm()
+    registration_form = RegistrationForm(request.form)
 
-    if registration_form.validate_on_submit():
+    if registration_form.validate():
 
         try:
         
