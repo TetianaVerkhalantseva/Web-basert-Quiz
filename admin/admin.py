@@ -16,23 +16,24 @@ def user_login():
     if current_user.is_authenticated:
         return redirect(url_for("admin.admin_profile"))
 
-    login_form = LoginForm()
+    #login_form = LoginForm()
+    form = LoginForm(request.form)
 
-    if login_form.validate_on_submit():
-
+    #if login_form.validate_on_submit():
+    if form.validate():
         try:
 
-            user = db_session.query(Admin).filter_by(login=login_form.login.data).first()
+            user = db_session.query(Admin).filter_by(login=form.login.data).first()
 
             if not user:
 
-                flash(f"Det finnes ingen bruker med påloggingen '{login_form.login.data}'.", category="error")
+                flash(f"Det finnes ingen bruker med påloggingen '{form.login.data}'.", category="error")
 
                 return redirect(url_for("admin.user_login"))
 
-            if not cph(user.passord, login_form.password.data):
+            if not cph(user.passord, form.password.data):
 
-                flash(f"Feil passord for påloggingen '{login_form.login.data}'.", category="error")
+                flash(f"Feil passord for påloggingen '{form.login.data}'.", category="error")
 
                 return redirect(url_for("admin.user_login"))
 
@@ -48,7 +49,7 @@ def user_login():
 
             return redirect(url_for("admin.user_login"))
 
-    return render_template("admin/user_login.html", login_form=login_form)
+    return render_template("admin/user_login.html", login_form=form)
 
 
 @admin.route("/user-registration", methods=["GET", "POST"])
