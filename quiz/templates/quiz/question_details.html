@@ -1,0 +1,33 @@
+{% extends 'admin/admin_header.html' %}
+
+
+{% block title %} Spørsmål Detaljer {% endblock %}
+
+{% block stylesheets %}
+    {{ super() }}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('.static', filename='/css/question_details.css') }}">
+{% endblock %}
+
+{% block content %}
+    
+    <h2 class="question-title"> {{ question.spørsmål }} </h2>
+
+    <section>
+        <h3 class="section-title"> Svaralternativer </h3>
+
+        {% for answer in answers %}
+
+                <div class="answer-container">
+                    <span class="answer-text"> {{ answer.svar }} </span>
+                    <img src="{{ url_for('static', filename='/img/icon/correct.ico' if answer.korrekt else '/img/icon/trash.ico') }}" class="image">
+                </div>
+
+        {% endfor %}
+
+        <a href="{{ url_for('admin.admin_profile') }}" class="button button-block"> Administrator Profil </a>
+
+        <a href="{{ url_for('quiz.edit_question', question_id=question.id) }}" class="button button-block"> Redigere </a>
+
+    </section>
+
+{% endblock %}
