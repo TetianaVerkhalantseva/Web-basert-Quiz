@@ -21,7 +21,7 @@
 
     <form class="add-quiz-form" id="add-quiz-form" action="{{ url_for('quiz.add_quiz') }}" method="post">
 
-        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+        <input type="hidden" name="csrf_token" value="{{ csrf_token }}"/>
 
         <div>
             <input class="input-quiz-name" type="text" name="quiz_name" placeholder="Navn på quiz" required>
