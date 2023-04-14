@@ -1,0 +1,66 @@
+{% extends 'quiz/admin_header.html' %}
+
+
+{% block title %} Legg til spørsmål {% endblock %}
+
+{% block stylesheets %}
+
+    {{ super() }}
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('.static', filename='/css/add_question.css') }}">
+
+{% endblock %}
+
+{% block header_title %} Legg til spørsmål {% endblock %}
+
+{% block body %}
+
+    {{ super() }}
+
+    <h2 class="add-question-title"> Legg til spørsmål </h2>
+
+    <form class="add-question-form" id="add-question-form" action="{{ url_for('quiz.add_question') }}" method="post">
+
+        <input type="hidden" name="csrf_token" value="{{ csrf_token }}"/>
+
+        <div>
+            <input type="text" name="question" placeholder="Spørsmål" required>
+        </div>
+
+        <div>
+
+            <label for="category-select"> Kategori: </label>
+
+            <select name="category-select" id="category-select" form="add-question-form">
+                {% for category in categories %}
+                    <option value="{{ category.id }}"> {{ category.navn }} </option>
+                {% endfor %}
+            </select>
+
+        </div>
+
+        {% for answer in answers %}
+
+            <div class="answer-container">
+                <input type="text" name="answer" placeholder="Svar" value="{{ answer }}" required>
+                <input type="checkbox" name="correct" value="correct">
+            </div>
+
+        {% endfor %}
+
+        <input type="submit" name="submit" value="Legg til spørsmål">
+
+    </form>
+
+    <form class="add-answer-form" action="" method="post">
+
+        <input type="hidden" name="csrf_token" value="{{ csrf_token }}"/>
+
+        <input type="text" name="answer" placeholder="Svar" required>
+        <input type="checkbox" name="correct" value="correct">
+
+        <input type="submit" name="submit" value="Legg til svar">
+
+    </form>
+
+{% endblock %}

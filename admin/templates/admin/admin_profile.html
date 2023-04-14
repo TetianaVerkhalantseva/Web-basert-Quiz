@@ -7,6 +7,14 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('.static', filename='/css/admin_profile.css') }}">
 {% endblock %}
 
+{% block javascripts %}
+
+    {{ super() }}
+
+    <script type="text/javascript" src="{{ url_for('.static', filename='/js/remove.js') }}"> </script>
+
+{% endblock %}
+
 {% block content %}
     {% if current_user['fornavn'] is not none and current_user['etternavn'] is not none %}
         <h2 class="admin-full-name"> {{ current_user['fornavn'] }} {{ current_user['etternavn'] }} </h2>
@@ -20,9 +28,13 @@
         <h3 class="section-title"> Mine Quizer </h3>
         {% if quizzes %}
             {% for quiz in quizzes %}
-                <a href="#" class="quiz-link">
-                    <div class="quiz-container">{{ quiz.navn }}</div>
-                </a>
+
+                <div class="quiz-container">
+                    <a href="#" class="quiz-link"> <span> {{ quiz.navn }} </span> </a>
+                    <img src="{{ url_for('.static', filename='/img/icon/trash.ico') }}" class="image-button" onclick="onRemoveQuizClick({{'"' + url_for('quiz.remove_quiz', quiz_id=quiz.id) + '"' }})">
+                    <a href="#"> <img src="{{ url_for('.static', filename='/img/icon/edit.ico') }}" class="image-button"> </a>
+                </div>
+
             {% endfor %}
         {% else %}
             <p class="no-items-message"> Ingen quizer </p>
@@ -35,20 +47,49 @@
     </section>
 
     <section>
+
         <h3 class="section-title"> Mine Spørsmål </h3>
+
         {% if questions %}
+
             {% for question in questions %}
-                <a href="#" class="question-link">
-                    <div class="question-container">{{ question.spørsmål }}</div>
-                </a>
+
+                <div class="question-container">
+                    <a href="#" class="question-link"> <span> {{ question.spørsmål }} </span> </a>
+                    <img src="{{ url_for('.static', filename='/img/icon/trash.ico') }}" class="image-button" onclick="onRemoveQuestionClick({{'"' + url_for('quiz.remove_question', question_id=question.id) + '"' }})">
+                    <a href="#"> <img src="{{ url_for('.static', filename='/img/icon/edit.ico') }}" class="image-button"> </a>
+                </div>
+
             {% endfor %}
+
         {% else %}
             <p class="no-items-message"> Ingen spørsmål </p>
         {% endif %}
 
         <div class="button-add-container">
-            <a href="#" class="button button-add"> Legg Til </a>
+            <a href="{{ url_for('quiz.add_question') }}" class="button button-add"> Legg Til </a>
         </div>
 
     </section>
+
+    <section>
+
+        <h3 class="section-title"> Kategorier </h3>
+
+        {% if categories %}
+
+            {% for category in categories %}
+
+                <div class="category-container">
+                    <span> {{ category.navn }} </span>
+                </div>
+
+            {% endfor %}
+
+        {% else %}
+            <p class="no-items-message"> Ingen kategorier </p>
+        {% endif %}
+
+    </section>
+
 {% endblock %}
