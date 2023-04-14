@@ -3,7 +3,7 @@ from flask_login import login_user, logout_user, login_required, current_user
 from werkzeug.security import generate_password_hash as gph, check_password_hash as cph
 from sqlalchemy.exc import IntegrityError
 
-from models import Admin, Quiz, Question, db_session
+from models import Admin, Quiz, Question, QuestionCategory, db_session
 from forms import LoginForm, RegistrationForm
 
 
@@ -114,7 +114,9 @@ def admin_profile():
 
     questions = db_session.query(Question).filter_by(admin_id=current_user['id']).all()
 
-    return render_template("admin/admin_profile.html", quizzes=quizzes, questions=questions)
+    categories = db_session.query(QuestionCategory).all()
+
+    return render_template("admin/admin_profile.html", quizzes=quizzes, questions=questions, categories=categories)
 
 
 @admin.route("/user-logout")

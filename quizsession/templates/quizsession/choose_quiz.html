@@ -23,7 +23,7 @@
 
                 {% if quiz.number_of_questions != 0 %}
 
-                    <a href="{{ url_for('quizsession.quiz_greeting', quiz_id=quiz.id) }}" class="quiz-item">
+                    <a {{ "href=" + url_for('quizsession.quiz_greeting', quiz_id=quiz.id) if quiz.id not in session['passed_quizzes'] else '' }} class="quiz-item{{' quiz-item-passed' if quiz.id in session['passed_quizzes'] else '' }}">
 
                         <h3> {{ quiz.name }} </h3>
                         <p> {{ quiz.description }} </p>
@@ -34,6 +34,10 @@
                             <span> {{ category }} </span>
                         {% endfor %}
                         </p>
+
+                        {% if quiz.id in session['passed_quizzes'] %}
+                            <p class="quiz-passed-message"> <span> Har allerede tatt denne quizen </span> </p>
+                        {% endif %}
 
                     </a>
 

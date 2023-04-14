@@ -22,3 +22,10 @@ class RegistrationForm(FlaskForm):
     ])
 
     submit = SubmitField('Registrer')
+
+
+class AddCategoryForm(FlaskForm):
+
+    category_name = StringField('Kategori Navn', validators=[DataRequired(message="Du må angi en kategori.")])
+
+    submit = SubmitField('Legg til kategori')

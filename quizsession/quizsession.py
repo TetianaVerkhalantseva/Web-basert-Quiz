@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template, request, session
 from sqlalchemy import func
 from sqlalchemy.orm import joinedload
 
@@ -90,10 +90,25 @@ def quiz(quiz_id):
 
         result = parse_quiz_form_data(questions, request.form)
 
-        # question_has_quiz = db_session.query(QuestionHasQuiz).filter_by(quiz_id=quiz_id).all()
+        question_has_quiz_records = db_session.query(QuestionHasQuiz).filter_by(quiz_id=quiz_id).all()
         
-        # for question in question_has_quiz:
-        #     print(question.id, question.quiz_id, question.spørsmål_id)
+        for record in question_has_quiz_records:
+
+            if not result[record.spørsmål_id]['answers']:
+                db_session.add(QuizSession(spørsmål_har_quiz_id=record.id, svar_id=None, dato_tid=func.now()))
+                continue
+
+            for answer in result[record.spørsmål_id]['answers']:
+                db_session.add(QuizSession(spørsmål_har_quiz_id=record.id, svar_id=answer, dato_tid=func.now()))
+
+        db_session.commit()
+
+        if 'passed_quizzes' not in session:
+            session['passed_quizzes'] = [quiz_id]
+        else:
+            session['passed_quizzes'].append(quiz_id)
+        
+        session.modified = True
 
         return render_template(
             "quizsession/quiz_result.html",

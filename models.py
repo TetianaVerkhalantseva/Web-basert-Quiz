@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Text, Boolean, ForeignKey, create_engine
+from sqlalchemy import Column, Integer, String, Text, DateTime, Boolean, ForeignKey, create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from flask_login import UserMixin
 from sqlalchemy.orm import relationship, sessionmaker
@@ -75,6 +75,7 @@ class QuizSession(base):
     id = Column(Integer, primary_key=True, autoincrement=True)
     spørsmål_har_quiz_id = Column(Integer, ForeignKey('spørsmål_har_quiz.id'), nullable=False)
     svar_id = Column(Integer, ForeignKey('svarmulighet.id'), nullable=False)
+    dato_tid = Column(DateTime, nullable=False)
     spørsmål_har_quiz = relationship('QuestionHasQuiz')
     svar = relationship('AnswerOption')
 
