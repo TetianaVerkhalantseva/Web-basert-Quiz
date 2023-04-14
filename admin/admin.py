@@ -3,7 +3,7 @@ from flask_login import login_user, logout_user, login_required, current_user
 from werkzeug.security import generate_password_hash as gph, check_password_hash as cph
 from sqlalchemy.exc import IntegrityError
 
-from models import Admin, Quiz, Question, db_session
+from models import Admin, Quiz, Question, QuestionCategory, db_session
 from forms import LoginForm, RegistrationForm
 
 
@@ -16,24 +16,23 @@ def user_login():
     if current_user.is_authenticated:
         return redirect(url_for("admin.admin_profile"))
 
-    #login_form = LoginForm()
-    form = LoginForm(request.form)
+    login_form = LoginForm()
 
-    #if login_form.validate_on_submit():
-    if form.validate():
+    if login_form.validate_on_submit():
+
         try:
 
-            user = db_session.query(Admin).filter_by(login=form.login.data).first()
+            user = db_session.query(Admin).filter_by(login=login_form.login.data).first()
 
             if not user:
 
-                flash(f"Det finnes ingen bruker med påloggingen '{form.login.data}'.", category="error")
+                flash(f"Det finnes ingen bruker med påloggingen '{login_form.login.data}'.", category="error")
 
                 return redirect(url_for("admin.user_login"))
 
-            if not cph(user.passord, form.password.data):
+            if not cph(user.passord, login_form.password.data):
 
-                flash(f"Feil passord for påloggingen '{form.login.data}'.", category="error")
+                flash(f"Feil passord for påloggingen '{login_form.login.data}'.", category="error")
 
                 return redirect(url_for("admin.user_login"))
 
@@ -49,7 +48,7 @@ def user_login():
 
             return redirect(url_for("admin.user_login"))
 
-    return render_template("admin/user_login.html", login_form=form)
+    return render_template("admin/user_login.html", login_form=login_form)
 
 
 @admin.route("/user-registration", methods=["GET", "POST"])
@@ -58,9 +57,9 @@ def user_registration():
     if current_user.is_authenticated:
         return redirect(url_for("admin.admin_profile"))
 
-    registration_form = RegistrationForm(request.form)
+    registration_form = RegistrationForm()
 
-    if registration_form.validate():
+    if registration_form.validate_on_submit():
 
         try:
         
@@ -115,7 +114,9 @@ def admin_profile():
 
     questions = db_session.query(Question).filter_by(admin_id=current_user['id']).all()
 
-    return render_template("admin/admin_profile.html", quizzes=quizzes, questions=questions)
+    categories = db_session.query(QuestionCategory).all()
+
+    return render_template("admin/admin_profile.html", quizzes=quizzes, questions=questions, categories=categories)
 
 
 @admin.route("/user-logout")

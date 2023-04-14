@@ -51,24 +51,38 @@ section .button-add-container .button-add {
 }
 
 section .quiz-container,
-section .question-container {
+section .question-container,
+section .category-container {
     width: 80%;
+    height: 30px;
     margin: 10px auto;
     padding: 10px;
     text-align: center;
     background-color: #f2f2f2;
     border-radius: 5px;
+    line-height: 30px;
 }
 
 .quiz-link,
 .question-link {
-    display: block;
     text-decoration: none;
     color: #333;
 }
 
-.quiz-link:hover .quiz-container,
-.question-link:hover .question-container {
+section .category-container span {
+    color: #333;
+}
+
+.quiz-container:hover,
+.question-container:hover {
     background-color: #e6e6e6;
+    cursor: pointer;
+}
+
+section .image-button {
+    float: right;
+    width: 30px;
+    height: 30px;
+    margin-right: 20px;
     cursor: pointer;
 }
