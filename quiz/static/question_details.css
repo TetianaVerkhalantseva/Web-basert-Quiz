@@ -64,6 +64,11 @@ section .image {
     cursor: pointer;
 }
 
+#barchart_values {
+    margin: 20px auto;
+    width: fit-content;
+}
+
 .button {
     background-color: #555;
     border: 2px solid #000;
@@ -90,4 +95,3 @@ section .image {
     margin-top: 50px;
     margin-bottom: 50px;
 }
-

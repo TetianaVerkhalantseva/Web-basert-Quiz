@@ -21,7 +21,7 @@
 
     <form class="add-question-form" id="add-question-form" action="{{ url_for('quiz.edit_question', question_id=question_id) }}" method="post">
 
-        <input type="hidden" name="csrf_token" value="{{ csrf_token }}"/>
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
 
         <div>
             <input class="input-question" type="text" name="question" placeholder="Spørsmål" value="{{ question }}" required>
@@ -44,7 +44,7 @@
             <div class="answer-container">
                 <input type="text" name="answer-{{ answer.id }}" placeholder="Svar" value="{{ answer.svar }}" required>
                 <input type="checkbox" name="correct-{{answer.id }}" value="correct" {% if answer.korrekt %} checked {% endif %}>
-                <a href="{{ url_for('quiz.remove_answer', answer_id=answer.id) }}"> <img src="{{ url_for('static', filename='/img/icon/trash.ico') }}"> </a>
+                <a href="{{ url_for('quiz.remove_answer', answer_id=answer.id) }}"> <img src="{{ url_for('static', filename='/img/icon/trash.ico') }}" alt="Remove Answer"> </a>
             </div>
 
         {% endfor %}
@@ -64,11 +64,11 @@
 
     <form class="add-answer-form" action="{{ url_for('quiz.add_answer_for_edit', question_id=question_id) }}" method="post">
 
-        <input type="hidden" name="csrf_token" value="{{ csrf_token }}"/>
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
 
         {% for answer in new_answers %}
 
-            <input type="hidden" name="new-answer-{{ loop.index }}" value="{{ answer.svar }}" required>
+            <input type="hidden" name="new-answer-{{ loop.index }}" value="{{ answer.svar }}">
             <input type="hidden" name="new-correct-{{ loop.index }}" value="{{ answer.korrekt }}">
 
         {% endfor %}
