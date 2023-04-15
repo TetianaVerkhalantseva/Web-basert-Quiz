@@ -13,11 +13,11 @@
 
 {% block body %} 
 
-  <form class="registration-form", action="#", method="post">
+  <form class="registration-form" action="{{ url_for('admin.user_registration') }}" method="post">
 
       {{ registration_form.csrf_token }}
 
-      <h3 class="title"> Registrering </h2>
+      <h2 class="title"> Registrering </h2>
 
       <table class="table">
 

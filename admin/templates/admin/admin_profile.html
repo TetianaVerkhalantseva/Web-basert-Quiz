@@ -31,8 +31,8 @@
 
                 <div class="quiz-container">
                     <a href="{{ url_for('quiz.quiz_details', quiz_id=quiz.id) }}" class="quiz-link"> <span> {{ quiz.navn }} </span> </a>
-                    <img src="{{ url_for('static', filename='/img/icon/trash.ico') }}" class="image-button" onclick="onRemoveQuizClick({{'"' + url_for('quiz.remove_quiz', quiz_id=quiz.id) + '"' }})">
-                    <a href="{{ url_for('quiz.edit_quiz', quiz_id=quiz.id) }}"> <img src="{{ url_for('static', filename='/img/icon/edit.ico') }}" class="image-button"> </a>
+                    <img src="{{ url_for('static', filename='/img/icon/trash.ico') }}" class="image-button" alt="Remove Quiz" onclick="onRemoveQuizClick({{'"' + url_for('quiz.remove_quiz', quiz_id=quiz.id) + '"' }})">
+                    <a href="{{ url_for('quiz.edit_quiz', quiz_id=quiz.id) }}"> <img src="{{ url_for('static', filename='/img/icon/edit.ico') }}" alt="Edit Quiz" class="image-button"> </a>
                 </div>
 
             {% endfor %}
@@ -56,8 +56,8 @@
 
                 <div class="question-container">
                     <a href="{{ url_for('quiz.question_details', question_id=question.id) }}" class="question-link"> <span> {{ question.spørsmål }} </span> </a>
-                    <img src="{{ url_for('static', filename='/img/icon/trash.ico') }}" class="image-button" onclick="onRemoveQuestionClick({{'"' + url_for('quiz.remove_question', question_id=question.id) + '"' }})">
-                    <a href="{{ url_for('quiz.edit_question', question_id=question.id) }}"> <img src="{{ url_for('static', filename='/img/icon/edit.ico') }}" class="image-button"> </a>
+                    <img src="{{ url_for('static', filename='/img/icon/trash.ico') }}" class="image-button" alt="Remove Quiz" onclick="onRemoveQuestionClick({{'"' + url_for('quiz.remove_question', question_id=question.id) + '"' }})">
+                    <a href="{{ url_for('quiz.edit_question', question_id=question.id) }}"> <img src="{{ url_for('static', filename='/img/icon/edit.ico') }}" alt="Edit Question" class="image-button"> </a>
                 </div>
 
             {% endfor %}
@@ -92,7 +92,7 @@
 
     </section>
 
-    <form class="add-category-form", action="{{ url_for('quiz.add_category') }}", method="post">
+    <form class="add-category-form" action="{{ url_for('quiz.add_category') }}" method="post">
 
         {{ add_category_form.csrf_token }}
   
