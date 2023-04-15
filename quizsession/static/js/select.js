@@ -1,4 +1,4 @@
-function selectQuestion(questionId) {
+function selectQuestion(questionNumber) {
 
     var questionNumbers = document.getElementById("question-numbers").children;
 
@@ -6,7 +6,7 @@ function selectQuestion(questionId) {
         questionNumbers[i].classList.remove("selected");
     }
 
-    var questionNumberElement = document.getElementById("question-" + questionId);
+    var questionNumberElement = document.getElementById("question-" + questionNumber);
     questionNumberElement.classList.add("selected");
 
     var questionContainers = document.getElementsByClassName("question-container");
@@ -15,7 +15,7 @@ function selectQuestion(questionId) {
         questionContainers[i].style.display = "none";
     }
 
-    var questionContainer = document.getElementById("question-container-" + questionId);
+    var questionContainer = document.getElementById("question-container-" + questionNumber);
     questionContainer.style.display = "block";
 
 }

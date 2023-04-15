@@ -4,7 +4,7 @@ from werkzeug.security import generate_password_hash as gph, check_password_hash
 from sqlalchemy.exc import IntegrityError
 
 from models import Admin, Quiz, Question, QuestionCategory, db_session
-from forms import LoginForm, RegistrationForm
+from forms import LoginForm, RegistrationForm, AddCategoryForm
 
 
 admin = Blueprint("admin", __name__, template_folder="templates", static_folder="static")
@@ -116,7 +116,9 @@ def admin_profile():
 
     categories = db_session.query(QuestionCategory).all()
 
-    return render_template("admin/admin_profile.html", quizzes=quizzes, questions=questions, categories=categories)
+    add_category_form = AddCategoryForm()
+
+    return render_template("admin/admin_profile.html", quizzes=quizzes, questions=questions, categories=categories, add_category_form=add_category_form)
 
 
 @admin.route("/user-logout")

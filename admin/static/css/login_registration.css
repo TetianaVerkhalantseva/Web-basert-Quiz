@@ -12,7 +12,7 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
 }
-  
+
 
 tr {
     padding: 20px;
@@ -21,6 +21,10 @@ tr {
 
 .title {
     font: bold 30px "Microsoft YaHei", sans-serif;
+}
+
+.login-form, .registration-form {
+    margin-top: 100px;
 }
 
 .login-form input[type="submit"], .registration-form input[type="submit"] {
