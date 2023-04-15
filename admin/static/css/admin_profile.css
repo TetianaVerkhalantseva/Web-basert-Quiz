@@ -86,3 +86,37 @@ section .image-button {
     margin-right: 20px;
     cursor: pointer;
 }
+
+.add-category-form {
+    margin: 0 auto;
+    width: fit-content;
+    margin-bottom: 130px;
+}
+
+.add-category-form h3 {
+    margin: 20px auto;
+    color: #555;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+}
+
+.add-category-form input[type="text"] {
+    margin: 0 20px;
+    padding: 5px;
+    border-radius: 8px;
+}
+
+.add-category-form input[type="submit"] {
+    margin: 0px 5px;
+    padding: 5px;
+    border-radius: 8px;
+    background-color: #555;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.add-category-form input[type="submit"]:hover {
+    background-color: #777;
+}

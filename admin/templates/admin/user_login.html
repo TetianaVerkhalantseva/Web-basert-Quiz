@@ -13,11 +13,11 @@
 
 {% block body %} 
 
-  <form class="login-form", action="#", method="post">
+  <form class="login-form" action="{{ url_for('admin.user_login') }}" method="post">
 
       {{ login_form.csrf_token }}
 
-      <h3 class="title"> Logg Inn </h2>
+      <h2 class="title"> Logg Inn </h2>
 
       <table class="table">
 

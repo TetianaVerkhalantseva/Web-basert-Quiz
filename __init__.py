@@ -1,5 +1,6 @@
-from flask import Flask, render_template, redirect, url_for, flash
+from flask import Flask, render_template, redirect, url_for
 from flask_login import LoginManager, current_user
+from flask_wtf.csrf import CSRFProtect
 
 from admin.admin import admin
 from quizsession.quizsession import quizsession
@@ -11,6 +12,8 @@ import config
 
 
 app = Flask(__name__)
+
+csrf = CSRFProtect(app)
 
 app.config.from_object(config.DevelopmentConfig)
 
@@ -46,4 +49,4 @@ def index():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()

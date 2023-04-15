@@ -26,7 +26,7 @@
                     <a {{ "href=" + url_for('quizsession.quiz_greeting', quiz_id=quiz.id) if quiz.id not in session['passed_quizzes'] else '' }} class="quiz-item{{' quiz-item-passed' if quiz.id in session['passed_quizzes'] else '' }}">
 
                         <h3> {{ quiz.name }} </h3>
-                        <p> {{ quiz.description }} </p>
+                        <p class="quiz-description"> {{ quiz.description }} </p>
 
                         <p class="quiz-extra-info quiz-extra-info-first"> Antall spørsmål: {{ quiz.number_of_questions }} </p>
                         <p class="quiz-extra-info"> Kategorier: 
