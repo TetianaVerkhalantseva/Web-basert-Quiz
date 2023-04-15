@@ -5,6 +5,7 @@ from sqlalchemy.orm import joinedload
 from models import Quiz, QuestionCategory, Question, QuestionHasQuiz, QuizSession, db_session
 from utils import parse_quiz_form_data
 
+import ast
 
 quizsession = Blueprint("quizsession", __name__, template_folder="templates", static_folder="static")
 
@@ -163,4 +164,4 @@ def quiz_result_details(quiz_id):
             
         questions.append(question_data)
 
-    return render_template("quizsession/quiz_result_details.html", quiz=quiz, questions=questions, result=eval(request.form['quiz_result']))
+    return render_template("quizsession/quiz_result_details.html", quiz=quiz, questions=questions, result=ast.literal_eval(request.form['quiz_result']))
