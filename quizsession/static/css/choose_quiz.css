@@ -83,8 +83,13 @@ body {
     margin: 10px 0;
 }
 
+.quiz-item .quiz-description {
+    line-height: 1.5;
+}
+
 .quiz-item .quiz-extra-info {
     color: #555;
+    line-height: 2;
 }
 
 .quiz-item .quiz-extra-info-first {
